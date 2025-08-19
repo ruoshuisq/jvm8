@@ -1,0 +1,129 @@
+cmake_minimum_required(VERSION 3.28)
+project(myjvm8)
+
+set(CMAKE_CXX_STANDARD 17)
+# 指定头文件搜索路径
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+# 指定lib目录
+link_directories("${PROJECT_SOURCE_DIR}/lib")
+#link_directories("c:/work/ws-c/myjvm8/lib/minizip.lib")
+link_libraries(ws2_32)
+
+add_executable(myjvm8 main.cpp
+        cmd.cpp
+        cmd.h
+        classpath/ClassReader.cpp
+        classpath/ClassReader.h
+        classpath/ClassPathEntry.cpp
+        classpath/ClassPathEntry.h
+        test/ClassPathEntryTest.cpp
+        test/ClassPathEntryTest.h
+        classpath/ClassFile.cpp
+        classpath/ClassFile.h
+        classpath/MemberInfo.cpp
+        classpath/MemberInfo.h
+        classpath/ConstantPool.cpp
+        classpath/ConstantPool.h
+        util/BasicType.h
+        classpath/AttributeInfo.cpp
+        classpath/AttributeInfo.h
+        classpath/ConstantInfo.cpp
+        classpath/ConstantInfo.h
+        rtda/heap/Object.cpp
+        rtda/heap/Object.h
+        rtda/Thread.cpp
+        rtda/Thread.h
+        rtda/Stack.cpp
+        rtda/Stack.h
+        rtda/Frame.cpp
+        rtda/Frame.h
+        rtda/LocalVars.cpp
+        rtda/LocalVars.h
+        rtda/OperandStack.cpp
+        rtda/OperandStack.h
+        rtda/interpret.cpp
+        rtda/interpret.h
+        instructions/ByteCode.h
+        instructions/Instruction.cpp
+        instructions/Instruction.h
+        instructions/constants/Constants.h
+        instructions/InstructionFactory.cpp
+        instructions/InstructionFactory.h
+        instructions/BytecodeReader.h
+        test/ConstantsTest.h
+        instructions/constants/Ipush.h
+        instructions/constants/Ldc.h
+        instructions/loads/Aload.h
+        instructions/loads/Dload.h
+        instructions/loads/Fload.h
+        instructions/loads/Iload.h
+        instructions/loads/Lload.h
+        instructions/loads/XAload.h
+        instructions/stores/Astore.h
+        instructions/stores/Istore.h
+        instructions/stores/Lstore.h
+        instructions/stores/Fstore.h
+        instructions/stores/Dstore.h
+        instructions/stores/XAstore.h
+        instructions/math/Add.h
+        instructions/math/And.h
+        instructions/math/Div.h
+        instructions/math/Iinc.h
+        instructions/math/Mul.h
+        instructions/math/Neg.h
+        instructions/math/Or.h
+        instructions/math/Rem.h
+        instructions/math/Sh.h
+        instructions/math/Sub.h
+        instructions/math/xor.h
+        instructions/stack/Dup.h
+        instructions/stack/Pop.h
+        instructions/stack/Swap.h
+        instructions/comparisons/dcmg.h
+        instructions/comparisons/fcmg.h
+        instructions/comparisons/lcmp.h
+        instructions/comparisons/Ifcond.h
+        instructions/comparisons/If_icmp.h
+        instructions/comparisons/if_acmp.h
+        instructions/conversions/D2x.h
+        instructions/conversions/F2x.h
+        instructions/conversions/I2x.h
+        instructions/conversions/L2x.h
+        instructions/control/Goto.h
+        instructions/control/Lookup_switch.h
+        instructions/control/Table_switch.h
+        instructions/control/Return.h
+        instructions/extended/Goto_w.h
+        instructions/extended/Ifnull.h
+        instructions/extended/Wide.h
+        instructions/references/New.h
+        rtda/heap/JClass.cpp
+        rtda/heap/JClass.hpp
+        rtda/heap/ConstantPoolRun.cpp
+        rtda/heap/ConstantPoolRun.hpp
+        rtda/heap/Field.cpp
+        rtda/heap/Field.hpp
+        rtda/heap/Method.cpp
+        rtda/heap/Method.hpp
+        rtda/heap/ClassLoader.cpp
+        rtda/heap/ClassLoader.hpp
+        rtda/heap/Constant.cpp
+        rtda/heap/Constant.hpp
+        instructions/references/Putstatic.hpp
+        instructions/references/Putfield.hpp
+        instructions/references/Getstatic.hpp
+        instructions/references/Getfield.hpp
+        instructions/references/instanceof.hpp
+        instructions/references/Checkcast.hpp
+        instructions/references/Invokespecial.hpp
+        instructions/references/Invokevirtual.hpp
+        rtda/heap/classHierarchy.hpp
+        rtda/Solt.cpp
+        rtda/Solt.hpp
+        util/MathUtil.hpp
+
+
+)
+#target_link_libraries(${PROJECT_NAME}  PRIVATE miniunz.lib -pthread)
+target_link_libraries(${PROJECT_NAME}  PRIVATE zlibwapi.dll zlibwapi.lib -pthread)
